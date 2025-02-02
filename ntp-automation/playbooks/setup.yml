@@ -1,0 +1,10 @@
+- name: Configure NTP and Nginx on Fedora and Ubuntu
+  hosts: all
+  become: yes
+  vars:
+    ansible_ssh_pass: "{{ fedora_ssh_pass if inventory_hostname == 'fedora' else ubuntu_ssh_pass }}"
+    ansible_become_password: "{{ fedora_sudo_pass if inventory_hostname == 'fedora' else ubuntu_sudo_pass }}"
+  roles:
+    - ntp
+    - nginx
+

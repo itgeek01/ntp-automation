@@ -1,0 +1,15 @@
+- name: Set timezone to Moscow
+  ansible.builtin.command: timedatectl set-timezone Europe/Moscow
+  when: ansible_os_family in ['Debian', 'RedHat']
+
+- name: Ensure timezone is Moscow
+  ansible.builtin.command: timedatectl
+
+- name: Verify current timezone
+  ansible.builtin.command: timedatectl
+  register: timezone_check
+
+- name: Set timezone to Moscow if not already set
+  ansible.builtin.command: timedatectl set-timezone Europe/Moscow
+  when: "'Europe/Moscow' not in timezone_check.stdout"
+

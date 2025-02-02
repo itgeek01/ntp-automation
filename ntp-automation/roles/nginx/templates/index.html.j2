@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Time</title>
+</head>
+<body>
+    <h1>Moscow time is:</h1>
+    <p>{{ lookup('pipe', 'date +"%Y-%m-%d %H:%M:%S %Z"') }}</p>
+</body>
+</html>
+

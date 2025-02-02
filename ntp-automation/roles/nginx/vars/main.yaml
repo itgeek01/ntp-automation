@@ -1,0 +1,2 @@
+nginx_web_root: "{{ '/usr/share/nginx/html' if ansible_os_family == 'RedHat' else '/var/www/html' }}"
+
